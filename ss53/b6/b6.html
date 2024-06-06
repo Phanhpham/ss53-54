@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function task1(callback) {
+    setTimeout(() => {
+        console.log("cviec 1 hthanh");
+        callback();
+    }, 1000);
+}
+function task2(callback) {
+    setTimeout(() => {
+        console.log("cv 2 hthanh");
+        callback();
+    }, 1500);
+}
+function task3(callback) {
+    setTimeout(() => {
+        console.log("cv 3 hthanh");
+        callback();
+    }, 2000);
+}
+task1(() => {
+    task2(() => {
+        task3(() => {
+            console.log("tat ca dc thuc thi");
+        });
+    });
+});
+
+</script>
+</html>

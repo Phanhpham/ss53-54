@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!---
+    Promise : sinh ra giải quyết các tác vụ bất đồng bộ 
+    giup viec giai quuyet batdong bo ma bi call back-hell(dung callback)
+    code nhin gọn gàng de chinh sua bảo trì hơn
+    Promise sinh ra o phien ban ES6-2015
+    1.cú pháp
+    let promise =new Promise ();
+    // khoi tao doi tuong tu object constructor 
+    // đối số của new Promise nhận vào 1 cái hàm 
+    trong hàm này nhận vào 2 tham số 
+    1.resolve: giai quyết (thanh công)
+    2.reject:từ chối (thất bại)
+    -->
+</body>
+<script>
+    let promise =new Promise ((resolve,reject)=>{
+        // viet logic xử lí code
+        //nếu logic thành công thì gọi resolve=> nhảy vao .then
+        // nếu logic thất bại thì gọi reject=> nhay vao .catch
+        // những tác vụ goi server,tuong tac database
+        // resolve(["hoa", "minh","thu"]);
+        reject("loi")
+    })
+    // khi khơi tao 1 promise thi no dang ơ trang thái pending (xử lí)
+    // console.log("promise",promise);
+    promise
+    .then((data)=>{
+        console.log("khi thanh cong tra ve du lieu",data);
+    })
+    .catch((err)=>{
+        console.log("err");
+    })
+
+    let newPromise = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve()
+        },1000);
+    })
+    newPromise
+    // .then(data=>console.log(111))
+    .then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("1111");
+                resolve()
+            },1000)
+        })
+    })
+    .then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("2222");
+                resolve()
+            },2000)
+        })
+    })
+    .then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("3333");
+                resolve()
+            },3000)
+        })
+    })
+    .catch(()=>{
+
+    })
+    // bên trong pthuc .then thi co nhieu 
+    //pthuc .then khác ket qua tra ve cua then đầu la tham so dau vao cua .then sau
+</script>
+</html>
